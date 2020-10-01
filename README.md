@@ -9,6 +9,9 @@ users to rate their goals and review the progress
 #### Tech
 Habbit was based out of Spring boot project and UI was on React JS. Here we will extend the to see imporovement in the UI alos few new components like Kafka and Temooral as a workflow
 engine.
-While you may question the usage here for some of the components, idea is to build understanding around these tools as well and hence may seem enforced but should be considered as a 
-forced choice
+While you may question the usage here for some of the components, idea is to build understanding around these tools as well and hence may seem enforced but should be considered as a forced choice
+
+## Design
+
+![Design Image](./data/designs/Goals.jpg)
 
