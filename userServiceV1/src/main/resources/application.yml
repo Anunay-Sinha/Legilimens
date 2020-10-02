@@ -2,3 +2,13 @@ server:
   port: 9090
   servlet:
     context-path: "/legilimens/luser"
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      authentication-database: admin
+      username: admin
+      password: admin
+      database: leg-user
