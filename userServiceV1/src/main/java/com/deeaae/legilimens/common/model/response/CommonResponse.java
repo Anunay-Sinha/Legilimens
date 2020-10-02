@@ -36,17 +36,30 @@ public class CommonResponse<T> {
     commonResponse.setResponse(response);
     return commonResponse;
   }
+
+  public static CommonResponse<FailureResponse> failure(String message,
+      int errorCode) {
+    CommonResponse<FailureResponse> commonResponse = new CommonResponse<FailureResponse>();
+    FailureResponse failureResponse = new FailureResponse();
+    failureResponse.setErrorCode(errorCode);
+    failureResponse.setMessage(message);
+    commonResponse.setStatus(1);
+    commonResponse.setResponse(failureResponse);
+    return commonResponse;
+  }
+
+  @Data
+  public static class FailureResponse {
+
+    /*
+     * error code for the failure
+     */
+    private int errorCode;
+    /*
+     * Short desc about the failure
+     */
+    private String message;
+  }
+
 }
 
-@Data
-class FailureResponse {
-
-  /*
-   * error code for the failure
-   */
-  private int errorCode;
-  /*
-   * Short desc about the failure
-   */
-  private String message;
-}
