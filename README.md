@@ -15,6 +15,10 @@ While you may question the usage here for some of the components, idea is to bui
 
 ![Design Image](./data/designs/Goals.jpg)
 
+---
+
+
+![LLD Design Image](./data/designs/Leglimency_LLD.jpg)
 
 ## Implementation
 
