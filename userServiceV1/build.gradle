@@ -14,6 +14,16 @@ configurations {
 	}
 }
 
+task utilJars(type: Jar) {
+	from sourceSets.main.output
+	include '/com/deeaae/legilimens/common/**'
+	archiveFileName = "common-utils.jar"
+
+}
+
+//enables to run task post build
+build.finalizedBy(utilJars)
+
 repositories {
 	mavenCentral()
 }
