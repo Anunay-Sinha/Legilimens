@@ -15,3 +15,8 @@ While you may question the usage here for some of the components, idea is to bui
 
 ![Design Image](./data/designs/Goals.jpg)
 
+
+## Implementation
+
+### Project structure
+Each service will have its own folder. Backend services will be in spring boot, will try to add least one service in GO at some point in time. These services will be deployable via docker containers and docker compose will be provided to stitch everything together.
