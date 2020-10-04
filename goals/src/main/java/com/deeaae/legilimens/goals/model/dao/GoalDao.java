@@ -25,7 +25,7 @@ public class GoalDao {
   String desc;
   @Indexed
   GoalType goalType;
-  String trackerId;
+  Set<String> taskIds;
   Set<String> alertIds;
   GoalStatus status;
   RAGStatus ragStatus;

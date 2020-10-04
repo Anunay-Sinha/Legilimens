@@ -79,11 +79,11 @@ public class GoalController {
     }
   }
 
-  @RequestMapping(value = "/{id}/tracker/{trackerId}", method = RequestMethod.PUT)
+  @RequestMapping(value = "/{id}/task/{taskId}", method = RequestMethod.PUT)
   public ResponseEntity<CommonResponse<?>> addTracker(@PathVariable String id,
-      @PathVariable String trackerId) {
+      @PathVariable String taskId) {
     try {
-      GoalDao goalDao = goalService.addTracker(id, trackerId);
+      GoalDao goalDao = goalService.addTask(id, taskId);
       CommonResponse<GoalDao> response = CommonResponse.success(goalDao);
       return ResponseEntity.status(HttpStatus.OK).body(response);
     } catch (Exception ex) {
