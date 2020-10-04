@@ -9,9 +9,9 @@ public interface GoalService {
 
   GoalDao createGoal(GoalDao goalDao);
 
-  GoalDao addTracker(String goalId, String trackerId);
+  GoalDao addTask(String goalId, String taskId);
 
-  GoalDao removeTracker(String goalId, String trackerId);
+  GoalDao removeTask(String goalId, String taskId);
 
   GoalDao addAlert(String goalId, String alertId);
 

@@ -35,27 +35,41 @@ public class GoalServiceImpl implements GoalService {
   }
 
   @Override
-  public GoalDao addTracker(String goalId, String trackerId) {
+  public GoalDao addTask(String goalId, String taskId) {
     GoalDao goalDao = getGoalById(goalId);
     if (goalDao == null) {
       throw new RuntimeException("Goal not found");
     }
-    goalDao.setTrackerId(trackerId);
-    return saveGoal(goalDao);
-
+    Set<String> taskIds = goalDao.getTaskIds();
+    if (taskIds == null) {
+      taskIds = new HashSet<>();
+    }
+    if (taskIds.contains(taskId)) {
+      return goalDao;
+    } else {
+      taskIds.add(taskId);
+      goalDao.setAlertIds(taskIds);
+      return saveGoal(goalDao);
+    }
   }
 
   @Override
-  public GoalDao removeTracker(String goalId, String trackerId) {
+  public GoalDao removeTask(String goalId, String taskId) {
     GoalDao goalDao = getGoalById(goalId);
     if (goalDao == null) {
       throw new RuntimeException("Goal not found");
     }
-    if (goalDao.getTrackerId().equals(trackerId)) {
-      goalDao.setTrackerId(null);
+    Set<String> taskIds = goalDao.getTaskIds();
+    if (taskIds == null) {
+      throw new RuntimeException("Task id not found for the given goal");
+    }
+    if (taskIds.contains(taskId)) {
+      taskIds.remove(taskId);
+      goalDao.setAlertIds(taskIds);
       return saveGoal(goalDao);
+
     } else {
-      throw new RuntimeException("Tracker id  not found for the goal");
+      throw new RuntimeException("Task id not found for the given goal");
     }
 
   }
