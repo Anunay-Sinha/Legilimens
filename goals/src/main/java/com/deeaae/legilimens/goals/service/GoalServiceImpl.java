@@ -49,6 +49,7 @@ public class GoalServiceImpl implements GoalService {
       return goalDao;
     } else {
       taskIds.add(taskId);
+
       goalDao.setTaskIds(taskIds);
       return saveGoal(goalDao);
     }
@@ -82,6 +83,8 @@ public class GoalServiceImpl implements GoalService {
       throw new RuntimeException("goal is already marked as created");
     }
 
+
+      
   }
 
   @Override
