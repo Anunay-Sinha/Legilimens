@@ -2,6 +2,7 @@ package com.deeaae.legilimens.goals.model;
 
 public enum GoalStatus {
   INITIALIZED,
+  READY,
   OPEN,
   CLOSED,
   CLOSED_ON_SUCCESS,

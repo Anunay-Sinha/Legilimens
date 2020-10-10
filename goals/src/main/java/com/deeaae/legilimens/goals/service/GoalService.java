@@ -11,6 +11,10 @@ public interface GoalService {
 
   GoalDao addTask(String goalId, String taskId);
 
+  GoalDao markCreationComplete(String goalId);
+
+  GoalDao markComplete(String goalId);
+
   GoalDao removeTask(String goalId, String taskId);
 
   GoalDao addAlert(String goalId, String alertId);
