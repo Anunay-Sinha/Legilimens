@@ -1,0 +1,8 @@
+server.port: 9092
+
+services:
+  goal:
+    url: http://localhost:9091
+    contextPath: /legilimens/goal_service
+    getGoalRequest: /v1/goals/
+

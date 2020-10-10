@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import sun.security.jgss.GSSCaller;
 
 @Service
 @Slf4j
@@ -48,9 +49,39 @@ public class GoalServiceImpl implements GoalService {
       return goalDao;
     } else {
       taskIds.add(taskId);
-      goalDao.setAlertIds(taskIds);
+      goalDao.setTaskIds(taskIds);
       return saveGoal(goalDao);
     }
+  }
+
+  @Override
+  public GoalDao markComplete(String goalId) {
+    GoalDao goalDao = getGoalById(goalId);
+    if (goalDao == null || !goalDao.getStatus().equals(GoalStatus.READY)) {
+      throw new RuntimeException("Goal not found or not in valid state");
+    }
+
+    goalDao.setStatus(GoalStatus.CLOSED_ON_SUCCESS);
+    goalDao.setCloseDate(LocalDateTime.now());
+    return saveGoal(goalDao);
+  }
+
+  @Override
+  public GoalDao markCreationComplete(String goalId) {
+    GoalDao goalDao = getGoalById(goalId);
+    if (goalDao == null) {
+      throw new RuntimeException("Goal not found");
+    }
+    if(goalDao.getTaskIds() == null || goalDao.getTaskIds().size()==0) {
+      throw new RuntimeException("No Task not added.");
+    }
+    if(goalDao.getStatus().equals(GoalStatus.INITIALIZED)) {
+      goalDao.setStatus(GoalStatus.READY);
+      return saveGoal(goalDao);
+    } else {
+      throw new RuntimeException("goal is already marked as created");
+    }
+
   }
 
   @Override
